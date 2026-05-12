@@ -9,75 +9,85 @@
         :root { 
             --bidv-green: #006B68; 
             --bidv-gold: #FFC62F; 
-            --bg-gradient: linear-gradient(135deg, #f4f7f6 0%, #e8efed 100%);
+            --bg-gradient: linear-gradient(135deg, #f0f4f3 0%, #d9e2e1 100%);
         }
         body { 
-            font-family: -apple-system, system-ui, sans-serif; 
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: var(--bg-gradient); 
             margin: 0; padding: 15px; 
             display: flex; justify-content: center;
+            min-height: 100vh;
         }
         .card { 
             background: white; padding: 25px; 
             border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,107,104,0.1); 
+            box-shadow: 0 12px 40px rgba(0,60,58,0.15); 
             width: 100%; max-width: 400px; 
             border-top: 6px solid var(--bidv-green);
+            align-self: flex-start;
+            margin-top: 10px;
         }
-        .header { text-align: center; margin-bottom: 20px; }
-        .header h2 { color: var(--bidv-green); margin: 0; font-size: 20px; font-weight: 800; }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h2 { color: var(--bidv-green); margin: 0; font-size: 22px; font-weight: 800; text-transform: uppercase; }
+        .header p { color: #666; font-size: 13px; margin-top: 4px; font-weight: 500; }
         
-        .form-group { margin-bottom: 15px; position: relative; }
-        label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--bidv-green); font-size: 14px; }
+        .form-group { margin-bottom: 18px; position: relative; }
+        label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--bidv-green); font-size: 14px; }
         
         input { 
-            width: 100%; padding: 12px; 
-            border: 1.5px solid #e0e6e5; 
-            border-radius: 10px; box-sizing: border-box; 
-            font-size: 16px; outline: none; transition: 0.3s;
+            width: 100%; padding: 14px; 
+            border: 1.5px solid #d1dbda; 
+            border-radius: 12px; box-sizing: border-box; 
+            font-size: 16px; outline: none; transition: all 0.3s ease;
+            background-color: #fdfdfd;
         }
-        input:focus { border-color: var(--bidv-green); box-shadow: 0 0 0 3px rgba(0,107,104,0.1); }
+        input:focus { border-color: var(--bidv-green); box-shadow: 0 0 0 4px rgba(0,107,104,0.1); background-color: #fff; }
         
-        /* CSS cho ô tìm kiếm đơn vị */
+        /* Dropdown tìm kiếm */
         .search-container { position: relative; }
         .unit-list {
             position: absolute; width: 100%;
-            max-height: 200px; overflow-y: auto;
+            max-height: 220px; overflow-y: auto;
             background: white; border: 1.5px solid var(--bidv-green);
-            border-radius: 10px; z-index: 100;
-            display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px; z-index: 1000;
+            display: none; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             margin-top: 5px;
         }
         .unit-item {
-            padding: 12px; cursor: pointer; border-bottom: 1px solid #eee;
-            font-size: 15px; color: #333;
+            padding: 14px; cursor: pointer; border-bottom: 1px solid #f0f0f0;
+            font-size: 15px; color: #333; transition: background 0.2s;
         }
-        .unit-item:hover { background-color: #f0f7f6; color: var(--bidv-green); }
-        .unit-item.no-result { color: #999; pointer-events: none; }
+        .unit-item:hover { background-color: #f0f7f6; color: var(--bidv-green); font-weight: 600; }
+        .unit-item:last-child { border-bottom: none; }
+        .no-result { color: #999; text-align: center; padding: 15px; pointer-events: none; }
 
         #btn { 
-            width: 100%; padding: 15px; 
+            width: 100%; padding: 16px; 
             background: var(--bidv-gold); border: none; 
-            border-radius: 10px; color: var(--bidv-green); 
-            font-weight: 800; font-size: 16px; cursor: pointer; 
-            margin-top: 10px; box-shadow: 0 4px 12px rgba(255,198,47,0.3);
+            border-radius: 12px; color: var(--bidv-green); 
+            font-weight: 800; font-size: 17px; cursor: pointer; 
+            margin-top: 10px; transition: all 0.2s ease;
+            box-shadow: 0 6px 20px rgba(255,198,47,0.4);
+            text-transform: uppercase;
         }
+        #btn:active { transform: scale(0.97); box-shadow: none; }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="header">
-            <h2>THÔNG TIN NHÂN SỰ</h2>
+            <h2>Hồ sơ nhân sự</h2>
+            <p>Dự án Quản trị WBS - BIDV</p>
         </div>
 
         <div class="form-group">
             <label>Họ và tên</label>
-            <input type="text" id="name" placeholder="Nguyễn Văn A">
+            <input type="text" id="name" placeholder="Ví dụ: Nguyễn Văn A">
         </div>
 
         <div class="form-group">
             <label>Email BIDV (@bidv.com.vn)</label>
-            <input type="text" id="email" placeholder="anv">
+            <input type="text" id="email" placeholder="Nhập tên đăng nhập (ví dụ: anv)">
         </div>
 
         <div class="form-group">
@@ -88,7 +98,7 @@
         <div class="form-group">
             <label>Đơn vị / Phòng ban</label>
             <div class="search-container">
-                <input type="text" id="unitInput" placeholder="Gõ để tìm nhanh..." onfocus="showList()" oninput="filterUnits()">
+                <input type="text" id="unitInput" placeholder="Gõ để tìm nhanh..." onfocus="showList()" oninput="filterUnits()" autocomplete="off">
                 <div id="unitList" class="unit-list">
                     <div class="unit-item" onclick="selectUnit('Ban Thư ký & QHCĐ')">Ban Thư ký & QHCĐ</div>
                     <div class="unit-item" onclick="selectUnit('Ban Quản lý rủi ro')">Ban Quản lý rủi ro</div>
@@ -99,11 +109,13 @@
                     <div class="unit-item" onclick="selectUnit('Ban Pháp chế')">Ban Pháp chế</div>
                     <div class="unit-item" onclick="selectUnit('Ban Tài chính')">Ban Tài chính</div>
                     <div class="unit-item" onclick="selectUnit('Văn phòng HĐQT')">Văn phòng HĐQT</div>
+                    <div class="unit-item" onclick="selectUnit('Ban Tổ chức nhân sự')">Ban Tổ chức nhân sự</div>
+                    <div class="unit-item" onclick="selectUnit('Ban Kiểm tra kiểm soát nội bộ')">Ban Kiểm tra kiểm soát nội bộ</div>
                 </div>
             </div>
         </div>
 
-        <button id="btn" onclick="submit()">HOÀN TẤT ĐĂNG KÝ</button>
+        <button id="btn" onclick="submit()">Hoàn tất đăng ký</button>
     </div>
 
     <script>
@@ -128,19 +140,20 @@
                 }
             }
             
-            // Xử lý khi không tìm thấy
             const list = document.getElementById('unitList');
+            const noResId = 'no-res-msg';
+            let noRes = document.getElementById(noResId);
+            
             if (!hasResult) {
-                if (!document.getElementById('no-res')) {
-                    const div = document.createElement('div');
-                    div.id = 'no-res';
-                    div.className = 'unit-item no-result';
-                    div.textContent = 'Không tìm thấy đơn vị';
-                    list.appendChild(div);
+                if (!noRes) {
+                    noRes = document.createElement('div');
+                    noRes.id = noResId;
+                    noRes.className = 'no-result';
+                    noRes.textContent = 'Không tìm thấy đơn vị phù hợp';
+                    list.appendChild(noRes);
                 }
-            } else {
-                const noRes = document.getElementById('no-res');
-                if (noRes) noRes.remove();
+            } else if (noRes) {
+                noRes.remove();
             }
         }
 
@@ -149,7 +162,6 @@
             document.getElementById('unitList').style.display = 'none';
         }
 
-        // Đóng danh sách khi nhấn ra ngoài
         document.addEventListener('click', function(e) {
             if (!document.querySelector('.search-container').contains(e.target)) {
                 document.getElementById('unitList').style.display = 'none';
@@ -158,16 +170,27 @@
 
         function submit() {
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
+            let emailRaw = document.getElementById('email').value.trim().toLowerCase();
             const phone = document.getElementById('phone').value.trim();
             const unit = document.getElementById('unitInput').value.trim();
 
-            if(!name || !email || !phone || !unit) {
-                alert("Vui lòng điền đầy đủ thông tin!");
+            // Xử lý làm sạch email: Nếu user gõ anv@bidv.com.vn -> chỉ lấy anv
+            if (emailRaw.includes('@')) {
+                emailRaw = emailRaw.split('@')[0];
+            }
+
+            if(!name || !emailRaw || !phone || !unit) {
+                tg.showAlert("Vui lòng điền đầy đủ thông tin và chọn Đơn vị!");
                 return;
             }
 
-            const data = { n: name, e: email + "@bidv.com.vn", p: phone, u: unit };
+            const data = { 
+                n: name, 
+                e: emailRaw + "@bidv.com.vn", 
+                p: phone, 
+                u: unit 
+            };
+
             tg.sendData(JSON.stringify(data));
             tg.close();
         }
